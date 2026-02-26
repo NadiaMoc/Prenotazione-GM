@@ -1,0 +1,97 @@
+.contenedor-inicio-invitado{
+width: 450px;
+height: 450px;
+margin: auto;
+position: absolute;
+top: 0; left: 0; bottom: 0; right: 0;
+display: flex;
+flex-direction: column;
+align-items: center;
+box-shadow: 0 2px 16px rgba(0,0,0,0.1); 
+background: #fff; 
+border-radius: 12px; 
+}
+
+.contenedor-logo-titulo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}
+
+.logo{
+    width: 100px;
+    height: auto;
+    margin-right: 20px;
+}
+
+.titulo-osp{
+    font-family: "Oswald", sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    color: #333;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+    line-height: 30px;
+}
+
+.form-items{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin: 0 0 15px 0;
+}
+
+.Form-Osp label {
+    min-width: 90px;
+    font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #333;
+}
+
+.Form-Osp input {
+    flex: 1;
+    padding: 8px 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 300px;
+}   
+
+.botones-ingreso-osp{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.boton-ingreso-osp{
+    height: 48px;
+    width: 200px;
+    padding: 10px 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #0454a8;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.boton-ingreso-osp:hover {
+    background: #b4b4b4; 
+    color:  #2a4d8f;         
+    border-color: #1a2a4d; 
+    transform: scale(1.05);
+    cursor: pointer;      
+    transition: all 0.2s;  
+}

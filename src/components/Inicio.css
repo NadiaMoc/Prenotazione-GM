@@ -1,0 +1,69 @@
+body{
+    background-image: url('../assets/collage.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.contenedor-principal-inicio{
+width: 450px;
+height: 450px;
+margin: auto;
+position: absolute;
+top: 0; left: 0; bottom: 0; right: 0;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+box-shadow: 0 2px 16px rgba(0,0,0,0.1); 
+background: #fff; 
+border-radius: 12px; 
+gap: 150px;
+} 
+.contenedor-inicio{
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    justify-content: center;
+}
+
+.logo{
+    width: 100px;
+    height: auto;
+    margin-right: 20px;
+}
+
+.prenotazione-inicio{
+    font-family: "Oswald", sans-serif;
+    font-weight: 800;
+    color: #333;
+}
+.Botones-Inicio{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+}
+
+.Boton-de-Inicio{
+    height: 48px;
+    width: 200px;
+    padding: 10px 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #0454a8;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.Boton-de-Inicio:hover {
+    background: #b4b4b4; 
+    color:  #2a4d8f;         
+    border-color: #1a2a4d; 
+    transform: scale(1.05);
+    cursor: pointer;      
+    transition: all 0.2s;  
+}
+
