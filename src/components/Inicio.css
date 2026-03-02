@@ -1,3 +1,4 @@
+
 body{
     background-image: url('../assets/collage.jpg');
     background-size: cover;
@@ -67,3 +68,82 @@ gap: 150px;
     transition: all 0.2s;  
 }
 
+
+/* Responsive */
+@media (max-width: 900px) {
+.contenedor-principal-inicio {
+width: 95vw;
+height: auto;
+min-width: unset;
+max-width: 100vw;
+padding: 0 8px;
+gap: 60px;
+}
+
+.logo {
+width: 80px;
+margin-right: 10px;
+}
+.Boton-de-Inicio {
+width: 90vw;
+max-width: 320px;
+font-size: 1.1rem;
+}
+}
+
+@media (max-width: 600px) {
+.contenedor-principal-inicio {
+width: 100vw;
+min-width: unset;
+max-width: 100vw;
+height: auto;
+padding: 0 2vw;
+border-radius: 0;
+box-shadow: none;
+position: static;
+gap: 32px;
+}
+.contenedor-inicio {
+flex-direction: column;
+align-items: center;
+gap: 8px;
+}
+.logo {
+width: 60px;
+margin: 0 0 8px 0;
+}
+.prenotazione-inicio {
+font-size: 1.1rem;
+text-align: center;
+}
+.Boton-de-Inicio {
+width: 100vw;
+max-width: 98vw;
+font-size: 1rem;
+padding: 10px 0;
+}
+}
+
+@media (max-width: 375px) {
+.contenedor-principal-inicio {
+width: 100vw;
+padding: 0 1vw;
+border-radius: 0;
+box-shadow: none;
+position: static;
+gap: 16px;
+}
+.logo {
+width: 48px;
+margin: 0 0 6px 0;
+}
+.prenotazione-inicio {
+font-size: 0.98rem;
+}
+.Boton-de-Inicio {
+width: 100vw;
+max-width: 99vw;
+font-size: 0.98rem;
+padding: 8px 0;
+}
+}

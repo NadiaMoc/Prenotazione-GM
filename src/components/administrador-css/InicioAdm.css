@@ -1,3 +1,4 @@
+
 .contenedor-principal-inicio-adm{
 width: 450px;
 height: 450px;
@@ -37,14 +38,20 @@ border-radius: 12px;
     width: 100%;
     margin: 0 0 15px 0;
 }
+
 .Form-Adm label {
-    min-width: 90px;
+    font-size: 1.1rem;
     font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
-    font-size: 1.2rem;
     font-weight: 500;
     color: #333;
+    display: block;
+    margin-bottom: 6px;
+    text-align: left;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    white-space: normal;
+    max-width: 100%;
 }
-
 
 .Form-Adm input {
     flex: 1;
@@ -81,4 +88,171 @@ border-radius: 12px;
     transform: scale(1.05);
     cursor: pointer;      
     transition: all 0.2s;  
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .contenedor-principal-inicio-adm {
+        width: 95vw;
+        height: auto;
+        min-width: unset;
+        max-width: 100vw;
+        padding: 0 8px;
+    }
+    .logo {
+        width: 80px;
+        margin-right: 10px;
+    }
+    .Form-Adm input {
+        width: 90vw;
+        max-width: 320px;
+    }
+}
+
+@media (max-width: 600px) {
+    .contenedor-principal-inicio-adm {
+        width: 100vw;
+        min-width: unset;
+        max-width: 100vw;
+        height: auto;
+        padding: 0 2vw;
+        border-radius: 0;
+        box-shadow: none;
+        position: static;
+    }
+    .contenedor-logo-titulo {
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        margin-top: 16px;
+    }
+    .logo {
+        width: 60px;
+        margin: 0 0 8px 0;
+    }
+    .amministratore {
+        font-size: 1.1rem;
+        text-align: center;
+    }
+    .Form-Adm input {
+            width: 94vw;
+            max-width: 94vw;
+            font-size: 0.95rem;
+            padding: 8px 0;
+            box-sizing: border-box;
+            overflow-x: hidden;
+            margin-bottom: 6px;
+    }
+        .Form-Adm label {
+            font-size: 0.95rem;
+            min-width: 0;
+            max-width: 90vw;
+            word-break: break-word;
+            overflow-wrap: anywhere;
+            white-space: normal;
+            text-align: left;
+            display: block;
+            margin-bottom: 2px;
+        }
+}
+
+@media (max-width: 430px) {
+    html, body {
+        width: 100vw;
+        min-width: 100vw;
+        overflow-x: hidden;
+    }
+    .contenedor-principal-inicio-adm {
+        width: 100vw;
+        min-width: 100vw;
+        max-width: 100vw;
+        padding: 0 2vw;
+        border-radius: 0;
+        box-shadow: none;
+        position: static;
+        box-sizing: border-box;
+        overflow-x: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+    }
+    .Form-Adm form {
+        width: 96vw;
+        max-width: 96vw;
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0 auto;
+        overflow-x: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+    }
+    .Form-Adm label {
+        display: block;
+        margin-bottom: 2px;
+        text-align: left;
+    }
+    .Form-Adm input {
+        display: block;
+        margin-bottom: 8px;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .logo {
+        width: 40px;
+        margin: 0 0 6px 0;
+    }
+    .amministratore {
+        font-size: 0.95rem;
+        word-break: break-word;
+        text-align: center;
+    }
+    .Form-Adm label {
+        font-size: 0.8rem;
+        max-width: 90vw;
+        margin-bottom: 4px;
+        text-align: center;
+        word-break: break-word;
+        overflow-wrap: break-word;
+        white-space: normal;
+        display: block;
+    }
+    .Form-Adm input {
+        width: 90vw;
+        max-width: 90vw;
+        font-size: 0.8rem;
+        padding: 8px 0;
+        box-sizing: border-box;
+        margin-bottom: 8px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .Form-Adm input {
+        width: 96vw;
+        max-width: 96vw;
+        font-size: 0.95rem;
+        padding: 8px 0;
+        box-sizing: border-box;
+        overflow-x: hidden;
+    }
+    .Form-Adm label {
+        font-size: 0.85rem;
+        min-width: 0;
+        max-width: 90vw;
+        word-break: break-word;
+        overflow-wrap: anywhere;
+        white-space: normal;
+        text-align: left;
+        display: block;
+        margin-bottom: 2px;
+    }
+    .botones-inicio-adm {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        align-items: center;
+    }
 }

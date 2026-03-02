@@ -1,3 +1,5 @@
+
+
 .contenedor-principal-agenda{
 width: 1000px;
 height: 90%;
@@ -101,4 +103,111 @@ border-radius: 12px;
     transform: scale(1.05);
     cursor: pointer;      
     transition: all 0.2s;  
+}
+
+
+/* --- Responsive --- */
+@media (max-width: 900px) {
+    .contenedor-principal-agenda {
+        width: 98vw;
+        min-width: unset;
+        max-width: 100vw;
+        padding: 0 8px;
+    }
+    .lista-reservas {
+        max-width: 98vw;
+    }
+    .evento-creado {
+        width: 98vw;
+        min-width: unset;
+        max-width: 100vw;
+    }
+}
+
+@media (max-width: 600px) {
+    .contenedor-principal-agenda {
+        width: 100vw;
+        min-width: unset;
+        max-width: 100vw;
+        padding: 0 2vw;
+        border-radius: 0;
+        box-shadow: none;
+        position: static;
+    }
+    .contenedor-logo-agenda {
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        margin-top: 16px;
+    }
+    .titulo-agenda {
+        font-size: 1.1rem;
+        margin: 24px 0 0 0;
+        padding-left: 0;
+    }
+    .lista-reservas {
+        max-width: 100vw;
+        padding: 0;
+    }
+    .reserva-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+        padding: 10px 8px;
+        font-size: 0.98rem;
+        width: 100%;
+    }
+    .reserva-hora {
+        min-width: unset;
+        font-size: 1.1em;
+    }
+    .reserva-nombre, .reserva-email, .reserva-celular {
+        font-size: 1em;
+    }
+    .reserva-item .cancelar {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 8px;
+        padding: 8px 0;
+    }
+}
+ @media (max-width: 375px) {
+    .contenedor-principal-agenda {
+        width: 100vw;
+        padding: 0 1vw;
+        border-radius: 0;
+        box-shadow: none;
+        position: static;
+    }
+    .titulo-agenda {
+        font-size: 1rem;
+        margin: 16px 0 0 0;
+        padding-left: 0;
+    }
+    .lista-reservas {
+        max-width: 100vw;
+        padding: 0;
+    }
+    .reserva-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2px;
+        padding: 8px 2px;
+        font-size: 0.92rem;
+        width: 100%;
+    }
+    .reserva-hora {
+        min-width: unset;
+        font-size: 1em;
+    }
+    .reserva-nombre, .reserva-email, .reserva-celular {
+        font-size: 0.98em;
+    }
+    .reserva-item .cancelar {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 6px;
+        padding: 7px 0;
+        font-size: 1em;
+    }
 }

@@ -1,5 +1,6 @@
 
 
+
 .Horario-home{
 width: 1000px;
 height: 90%;
@@ -128,4 +129,150 @@ border-color: #1a2a4d;
 transform: scale(1.05);
 cursor: pointer;       
 transition: all 0.2s;  
+}
+
+@media (max-width: 900px) {
+    .Horario-home {
+        width: 98vw;
+        min-width: unset;
+        max-width: 100vw;
+        padding: 0 8px;
+        height: auto;
+        border-radius: 8px;
+    }
+    .Horario-inicio-logo {
+        gap: 10px;
+        margin-top: 10px;
+    }
+    .titulo-horario {
+        font-size: 22px;
+        line-height: 26px;
+    }
+    .datos-prenotazione {
+        font-size: 1rem;
+        margin: 20px 0;
+        width: 80vw;
+    }
+    .horarios-grid {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 400px;
+    }
+    .Horario-seleccion {
+        max-width: 400px;
+    }
+}
+
+@media (max-width: 600px) {
+    .Horario-home {
+        width: 100vw;
+        min-width: unset;
+        max-width: 100vw;
+        height: auto;
+        padding: 0 2vw;
+        border-radius: 0;
+        box-shadow: none;
+        position: static;
+    }
+    .Horario-inicio-logo {
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        margin-top: 6px;
+    }
+    .titulo-horario {
+        font-size: 18px;
+        line-height: 22px;
+        margin-bottom: 8px;
+    }
+    .datos-prenotazione {
+        font-size: 0.95rem;
+        margin: 10px 0;
+        width: 96vw;
+    }
+    .horarios-grid {
+        grid-template-columns: 1fr;
+        max-width: 96vw;
+        gap: 8px;
+    }
+    .Horario-seleccion {
+        max-width: 96vw;
+        margin: 0 auto 16px auto;
+        gap: 8px;
+    }
+    .Horario-seleccion label,
+    .Horario-seleccion p {
+        font-size: 1rem;
+    }
+    .botones-accion-horario {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        align-items: stretch;
+        margin-top: 12px;
+    }
+    .boton-horarios {
+        width: 100%;
+        font-size: 1rem;
+        height: 40px;
+        padding: 8px 0;
+    }
+}
+
+@media (max-width: 375px) {
+    .Horario-home {
+        width: 100vw;
+        min-width: 100vw;
+        max-width: 100vw;
+        padding: 0 2vw;
+        border-radius: 0;
+        box-shadow: none;
+        position: static;
+        box-sizing: border-box;
+        overflow-x: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+    }
+    .Horario-inicio-logo {
+        margin-top: 2px;
+        gap: 2px;
+    }
+    .titulo-horario {
+        font-size: 15px;
+        line-height: 18px;
+        margin-bottom: 4px;
+    }
+    .datos-prenotazione {
+        font-size: 0.85rem;
+        margin: 4px 0;
+        width: 90vw;
+    }
+    .horarios-grid {
+        grid-template-columns: 1fr;
+        max-width: 90vw;
+        gap: 6px;
+    }
+    .Horario-seleccion {
+        max-width: 90vw;
+        margin: 0 auto 8px auto;
+        gap: 4px;
+    }
+    .Horario-seleccion label,
+    .Horario-seleccion p {
+        font-size: 0.85rem;
+    }
+    .botones-accion-horario {
+        flex-direction: column;
+        gap: 8px;
+        width: 100%;
+        align-items: stretch;
+        margin-top: 8px;
+    }
+    .boton-horarios {
+        width: 100%;
+        font-size: 0.85rem;
+        height: 36px;
+        padding: 6px 0;
+    }
 }
