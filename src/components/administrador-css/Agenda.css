@@ -12,6 +12,8 @@ align-items: center;
 box-shadow: 0 2px 16px rgba(0,0,0,0.1); 
 background: #fff; 
 border-radius: 12px; 
+overflow-y: auto;
+overflow-x: hidden;
 }
 
 .contenedor-logo-agenda{
@@ -81,6 +83,21 @@ border-radius: 12px;
 }
 .reserva-item .cancelar:hover {
     background: #c62828;
+}
+
+.boton-eliminar-evento {
+    margin-top: 10px;
+    background: #c62828;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 14px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.boton-eliminar-evento:hover {
+    background: #a61f1f;
 }
 
 .boton-agenda {

@@ -3,6 +3,7 @@ import logo from '../../assets/logoremax.png'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import '../administrador-css/EventoAdm.css'
+import { api } from '../../services/api'
 
 
 const EventoAdm = () => {
@@ -11,15 +12,31 @@ const [direccion, setDireccion] = useState('');
 const [datoAdicional, setDatoAdicional] = useState('');
 const [eventoCreado, setEventoCreado] = useState(null);
 const navigate = useNavigate();
-const handleSubmit = (e) => {
+
+const handleIrAgenda = () => {
+    navigate('/agenda');
+};
+
+const handleSubmit = async (e) => {
     e.preventDefault();
-    const evento = {
-        fecha,
-        direccion,
-        datoAdicional
-    };
-    setEventoCreado(evento);
-    localStorage.setItem('evento', JSON.stringify(evento));
+    try {
+        const evento = await api.createEvento({
+            fecha,
+            direccion,
+            datoAdicional
+        });
+
+        setEventoCreado({
+            ...evento,
+            fecha: typeof evento.fecha === 'string' && evento.fecha.includes('T')
+                ? evento.fecha.slice(0, 10)
+                : evento.fecha
+        });
+
+        localStorage.setItem('evento', JSON.stringify(evento));
+    } catch (error) {
+        alert(error.message || 'Errore creando evento.');
+    }
 };
 return (
     <div className='evento-home'>
@@ -40,7 +57,7 @@ return (
                             onChange={e => {
                                 setFecha(e.target.value);
                                 // No borrar reservas de ninguna fecha al crear evento
-                                localStorage.removeItem('horarioSeleccionato');
+                                localStorage.removeItem('horarioSeleccionado');
                             }}
                             required
                     />
@@ -66,7 +83,7 @@ return (
                         </div>
                         <div className='botones-evento'>
                             <button className='boton-evento' type="button" onClick={() => navigate(-1)}>Indietro</button>
-                            <button className='boton-evento' type="button" onClick={() => navigate('/agenda')}>Agenda</button>
+                            <button className='boton-evento' type="button" onClick={handleIrAgenda}>Agenda</button>
                             <button className='boton-evento' type="submit">Crear evento</button>
                         </div>
                         </form>
@@ -79,7 +96,7 @@ return (
                 <p><strong>Dato aggiuntivo:</strong> {eventoCreado.datoAdicional}</p>
                 <div className='botones-evento-creado'>
                     <button className='boton-evento' onClick={() => navigate(-1)}>Indietro</button>
-                    <button className='boton-evento' onClick={() => navigate('/agenda')}>Agenda</button>
+                    <button className='boton-evento' onClick={handleIrAgenda}>Agenda</button>
                 </div>
             </div>
             )}

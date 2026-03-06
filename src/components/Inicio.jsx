@@ -14,7 +14,7 @@ const Inicio = () => {
         </div>
         <div className='Botones-Inicio'>
             <button className='Boton-de-Inicio' onClick={() => navigate("/admin")}>Amministratore</button>
-            <button className='Boton-de-Inicio' onClick={() => navigate("/ospite")}>Ospite</button>
+            <button className='Boton-de-Inicio' onClick={() => navigate('/ospite')}>Ospite</button>
         </div>
     </div>
   )

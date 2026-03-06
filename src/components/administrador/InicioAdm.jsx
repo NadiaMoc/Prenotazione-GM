@@ -10,7 +10,7 @@ const InicioAdm = () => {
     const username = e.target.username.value;
       // Validar usuario y contraseña exactos
     const password = e.target.password.value;
-    if (username === 'GM1554' /* && password === '41872758' */) {
+    if (username === 'GM1554' && password === '41872758') {
         navigate('/creadorevento');
     } else {
         alert('Utente o password non validi.');

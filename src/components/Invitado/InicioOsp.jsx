@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import logo from '../../assets/logoremax.png'
 import { useNavigate } from 'react-router-dom'
 import '../invitado-css/InicioOsp.css'
@@ -6,42 +6,35 @@ import '../invitado-css/InicioOsp.css'
 
 const InicioOsp = () => {
     const navigate = useNavigate()
+    const [formData, setFormData] = useState({
+        nombre: '',
+        email: '',
+        telefono: ''
+    })
+
+    useEffect(() => {
+        const borrador = JSON.parse(localStorage.getItem('ospiteDraft') || '{}')
+        setFormData({
+            nombre: borrador.nombre || '',
+            email: borrador.email || '',
+            telefono: borrador.telefono || ''
+        })
+    }, [])
+
+    const handleChange = (e) => {
+        const { name, value } = e.target
+        setFormData((prev) => ({ ...prev, [name]: value }))
+    }
 
 const handleSubmit = (e) => {
     e.preventDefault();
-    // Obtener valores del formulario
-    const nombre = e.target.Nombre.value;
-    const email = e.target.email.value;
-    const telefono = e.target.telefono.value;
-    // Obtener el horario seleccionado
-    let horario = localStorage.getItem('horarioSeleccionado');
-    try {
-        horario = horario ? JSON.parse(horario) : "";
-    } catch {
-        // Si no es JSON, dejarlo como está
-    }
-    // Si no hay horario seleccionado, redirigir a la selección de horario
-    if (!horario || !horario.hora) {
-        navigate('/eleccionhorario');
-        return;
-    }
-    // Generar id único para el invitado
-    const id = Date.now() + '-' + Math.floor(Math.random() * 10000);
-    // Obtener la fecha del evento
-    const evento = JSON.parse(localStorage.getItem('evento') || '{}');
-    const fechaEvento = evento.fecha || "";
-    // Crear la reserva con fecha
-    const reserva = { id, nombre, email, celular: telefono, horario, fecha: fechaEvento };
-    // Obtener reservas existentes
-    const reservas = JSON.parse(localStorage.getItem('reservas') || '[]');
-    // Agregar la nueva reserva
-    reservas.push(reserva);
-    // Guardar en localStorage
-    localStorage.setItem('reservas', JSON.stringify(reservas));
-    // Limpiar el horario seleccionado para evitar usar el anterior
+    const nombre = formData.nombre;
+    const email = formData.email;
+    const telefono = formData.telefono;
+
+    localStorage.setItem('ospiteDraft', JSON.stringify({ nombre, email, telefono }));
     localStorage.removeItem('horarioSeleccionado');
-    // Navegar a la página principal o mostrar confirmación
-    navigate('/');
+    navigate('/eleccionevento');
 }
   return (
     <div className='contenedor-inicio-invitado'>
@@ -53,18 +46,42 @@ const handleSubmit = (e) => {
                 <form onSubmit={handleSubmit}>
                     <div className='form-items'>
                         <label htmlFor="Nombre">Nome:</label>
-                        <input type="text" id="Nombre" name="Nombre" placeholder='John Doe' required />
+                        <input
+                            type="text"
+                            id="Nombre"
+                            name="nombre"
+                            value={formData.nombre}
+                            onChange={handleChange}
+                            placeholder='John Doe'
+                            required
+                        />
                     </div>
                     <div className='form-items'>
                         <label htmlFor="email">Email:</label>
-                        <input type="email" id="email" name="email" placeholder='john.doe@example.com' required />
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            placeholder='john.doe@example.com'
+                            required
+                        />
                     </div>
                     <div className='form-items'>
                         <label htmlFor="telefono">Mobile:</label>
-                        <input type="tel" id="telefono" name="telefono" placeholder='+39 123 456 7890' required />
+                        <input
+                            type="tel"
+                            id="telefono"
+                            name="telefono"
+                            value={formData.telefono}
+                            onChange={handleChange}
+                            placeholder='+39 123 456 7890'
+                            required
+                        />
                     </div>
                     <div className='botones-ingreso-osp'>
-                        <button className='boton-ingreso-osp' type="button" onClick={() => navigate(-1)}>Indietro</button>
+                        <button className='boton-ingreso-osp' type="button" onClick={() => navigate('/')}>Indietro</button>
                         <button className='boton-ingreso-osp' type="submit">Prenota</button>
                     </div>
                 </form> 

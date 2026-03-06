@@ -1,0 +1,51 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Admin {
+  id           String   @id @default(cuid())
+  username     String   @unique
+  passwordHash String   @map("password_hash")
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  @@map("admins")
+}
+
+model Evento {
+  id           String    @id @default(cuid())
+  fecha        DateTime
+  direccion    String
+  datoAdicional String?  @map("dato_adicional")
+  activo       Boolean   @default(true)
+  createdAt    DateTime  @default(now()) @map("created_at")
+  reservas     Reserva[]
+
+  @@map("eventos")
+}
+
+model Reserva {
+  id                 String    @id @default(cuid())
+  eventoId           String    @map("evento_id")
+  evento             Evento    @relation(fields: [eventoId], references: [id], onDelete: Cascade)
+  nombre             String
+  email              String
+  celular            String
+  horario            String
+  confirmationSentAt DateTime? @map("confirmation_sent_at")
+  reminderSentAt     DateTime? @map("reminder_sent_at")
+  createdAt          DateTime  @default(now()) @map("created_at")
+
+  @@unique([eventoId, horario])
+  @@index([eventoId])
+  @@map("reservas")
+}
