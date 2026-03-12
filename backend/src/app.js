@@ -1,7 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const prisma = require('./lib/prisma');
-const { sendReservationConfirmationEmail } = require('./services/emailService');
+const { sendReservationConfirmationEmail, sendEmail, isEmailConfigured } = require('./services/emailService');
+const appName = process.env.APP_NAME || 'Prenotazione GM';
 
 const HORARIOS_BASE = [
   '09:00', '09:15', '09:30', '09:45',
@@ -36,6 +37,24 @@ app.use(express.json());
 
 app.get('/health', (_req, res) => {
   res.status(200).json({ ok: true, service: 'backend', timestamp: new Date().toISOString() });
+});
+
+// debug route to verify email configuration and send a test message
+app.get('/debug/email', async (req, res) => {
+  const to = req.query.to;
+  if (!to) {
+    return res.status(400).json({ message: 'Query parameter "to" required' });
+  }
+
+  // provide minimal content
+  const emailResult = await sendEmail({
+    to,
+    subject: `Test email - ${appName}`,
+    text: 'Questo è un messaggio di prova.',
+    html: '<p>Questo è un messaggio di prova.</p>'
+  });
+
+  return res.status(200).json({ isEmailConfigured, emailResult });
 });
 
 app.get('/eventos', async (_req, res) => {
@@ -151,6 +170,8 @@ app.post('/reservas', async (req, res) => {
         horario: reserva.horario,
         evento
       });
+
+      console.log('Email send result for reserva', reserva.id, emailResult);
 
       if (emailResult.sent) {
         await prisma.reserva.update({
