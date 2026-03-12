@@ -60,3 +60,8 @@ module.exports = {
   startReminderJob,
   processReminderEmails
 };
+
+// Para desarrollo local - ejecutar cron job al iniciar
+if (process.env.NODE_ENV === 'development') {
+  startReminderJob();
+}

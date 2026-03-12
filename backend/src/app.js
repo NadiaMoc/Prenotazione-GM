@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const prisma = require('./lib/prisma');
 const { sendReservationConfirmationEmail, sendEmail, isEmailConfigured } = require('./services/emailService');
+const { processReminderEmails } = require('./jobs/reminderJob');
 const appName = process.env.APP_NAME || 'Prenotazione GM';
 
 const HORARIOS_BASE = [
@@ -229,6 +230,23 @@ app.delete('/eventos/:eventoId', async (req, res) => {
     return res.status(200).json({ message: 'Evento desactivado correctamente.' });
   } catch (error) {
     return res.status(500).json({ message: 'Error eliminando evento.' });
+  }
+});
+
+// Endpoint para enviar recordatorios (llamado por cron-job.org)
+app.get('/cron/send-reminders', async (req, res) => {
+  try {
+    // Validar token de seguridad simple (opcional pero recomendado)
+    const cronToken = req.query.token;
+    if (cronToken !== process.env.CRON_SECRET_TOKEN) {
+      return res.status(401).json({ message: 'Unauthorized' });
+    }
+
+    await processReminderEmails();
+    return res.status(200).json({ message: 'Recordatorios procesados.' });
+  } catch (error) {
+    console.error('Error en cron endpoint:', error);
+    return res.status(500).json({ message: 'Error procesando recordatorios.' });
   }
 });
 
