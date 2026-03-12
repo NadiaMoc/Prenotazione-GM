@@ -16,7 +16,7 @@ const HORARIOS_BASE = [
 
 const app = express();
 
-const corsOrigin = process.env.CORS_ORIGIN || 'http://localhost:5173';
+const corsOrigin = process.env.CORS_ORIGIN || 'https://prenotazione-gm-qvga-jdd2uka8w-nadias-projects-3d753ab5.vercel.app';
 
 app.use(cors({
   origin: (origin, callback) => {
@@ -24,7 +24,7 @@ app.use(cors({
       return callback(null, true);
     }
 
-    const allowedOrigins = [corsOrigin, 'http://localhost:5173', 'http://localhost:5174'];
+    const allowedOrigins = [corsOrigin, 'https://prenotazione-gm-qvga-jdd2uka8w-nadias-projects-3d753ab5.vercel.app', 'https://prenotazione-gm-qvga-jdd2uka8w-nadias-projects-3d753ab5.vercel.app'];
     const isLocalhostOrigin = /^http:\/\/localhost:\d+$/.test(origin);
 
     if (allowedOrigins.includes(origin) || isLocalhostOrigin) {
