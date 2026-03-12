@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import logo from '../../assets/logoremax.png'
 import { useNavigate } from 'react-router-dom'
-import '../invitado-css/InicioOsp.css'
+import '../invitado-css/inicioOsp.css'
 
 
 const InicioOsp = () => {
